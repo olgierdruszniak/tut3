@@ -6,7 +6,6 @@ public class Container
     private int CargoMass { get; set; }
     private int Height { get; set; }
     private int TareWeight { get; set; }
-    private int CargoWeight { get; set; }
     private int Depth { get; set; }
     private string SerialNumber { get; set; }
     private int MaxPayload { get; set; }
@@ -16,6 +15,22 @@ public class Container
     public Container()
     {
         lastNumber = next_number++;
-        
+    }
+
+    public virtual void EmptyCargo()
+    {
+        CargoMass = 0;
+    }
+
+    public virtual void Load(int CargoMass)
+    {
+        if (CargoMass > MaxPayload)
+        {
+            throw new OverfillException();
+        }
+        else
+        {
+            this.CargoMass = CargoMass;
+        }
     }
 }
