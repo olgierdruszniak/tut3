@@ -7,7 +7,7 @@ public class Container
     private int Height { get; set; }
     private int TareWeight { get; set; }
     private int Depth { get; set; }
-    protected string SerialNumber { get; set; }
+    public string SerialNumber { get; set; }
     protected int MaxPayload { get; set; }
     protected int lastNumber;
     protected char Type { get; set; }

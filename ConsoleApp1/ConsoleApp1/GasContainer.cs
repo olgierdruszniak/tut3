@@ -9,15 +9,24 @@ public class GasContainer : Container, IHazardNotifier
     public GasContainer()
     {
         Type = 'G';
+        SerialNumber = $"KON-{Type}-{lastNumber}";
     }
 
     public override void EmptyCargo()
     {
-        CargoMass = (int)(MaxPayload * 0.05);
+        CargoMass = (int)(CargoMass * 0.05);
     }
 
     public virtual void Notify()
     {
-        
+        Console.WriteLine("Hazardous event for sNumber: " +SerialNumber);
+    }
+
+    public virtual void Load(int CargoMass) 
+    {
+        if (this.CargoMass + CargoMass > MaxPayload)
+        {
+            throw new Exception("ERROR");
+        }
     }
 }
